@@ -1,0 +1,63 @@
+extends layout
+
+block content
+    script(src="/"+"javascripts/validaciones.js")
+    script.
+        function msg(){
+            alert("ok");
+        }
+    section#contenido
+        //if rol == 1
+        form#agregar_materia(action=path+"/materia/add", method="post")
+            label._lblMateria Agregar materia
+            br
+            input#cveMateria(type="text" name ="clave" placeholder="Clave" required)
+            input#nombreMateria(type="text" name ="nombre" placeholder="Ingresa el nombre de la materia" required)
+            input#semestreMateria._solonumero(type="number" name ="semestre" placeholder="Semestre" min ="1" max="10" required)
+            //input#licMateria(type="text" name="lic" placeholder="Arquitectura" readonly required)
+            select#licMateria(name="lic" required)
+                option(value="") Selecciona tu licenciatura
+                if lic == 1
+                    option(value="1" selected) Arquitectura
+                else 
+                    option(value="1" selected) Arquitectura
+                if lic == 2
+                    option(value="2" selected) APOU
+                else
+                    option(value="2") APOU
+                if lic == 3
+                    option(value="3" selected) Diseño gráfico
+                else    
+                    option(value="3") Diseño gráfico
+                if lic == 4
+                    option(value="4" selected) Diseño industrial
+                else
+                    option(value="4") Diseño industrial
+            //select#licMateria(name="lic" required)
+                option(value="") Selecciona tu licenciatura
+                option(value="1") Arquitectura
+                option(value="2") APOU
+                option(value="3") Diseño gráfico
+                option(value="4") Diseño industrial
+            input#submitMateria(type="submit" value="Guardar") 
+        h2 Materias existentes en la base de datos, por licenciatura
+        if(info != -1)
+            label La materia con clave #{info}, ha sido borrada
+        div._lista
+            table
+                tr 
+                    th._header Materias
+                tbody
+                //-var vmaterias= {materias}
+                each materia in {materias}
+                    -var semestre="0"
+                    each i in materia
+                        if i.semestre !== semestre
+                            -var semestre= i.semestre
+                            tr
+                                td._header Semestre #{i.semestre} 
+                        tr
+                            td
+                                a._materia(href="/users/"+path+"/materia/"+i.clave) #{i.nombre}
+                
+        

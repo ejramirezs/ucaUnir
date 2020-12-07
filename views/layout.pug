@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  body
+    header
+      div#logo
+        img.logo(alt="Inicio" src="/"+"images/logo.svg")
+        a(href="/users/" + path): h1= title 
+      ul.menu_home
+        li
+          a(href= link) #{a}
+        li
+          a(href= "/users/"+path+"/profile") #{profile}
+    block content
+    footer

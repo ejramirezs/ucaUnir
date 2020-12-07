@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    script(src="/"+"javascripts/validaciones.js")
+    section#contenido
+        h2 Detalle de materia
+        -var infor = ""
+        if info != -1
+            -var infor= "La materia con clave "+info+" se agregó correctamente" 
+        h3#info= infor
+        form(action="/users/"+path+"/materia/"+clave+"/update" method="post")._materia
+            table: tr: td(colspan="3")  
+                label(for="clave") Clave de la materia
+                tr: td(colspan="3")
+                    input(type="text" value=clave name="clave" placeholder=clave readonly required)
+                tr: td(colspan="3")
+                    label(for="nombre") Nombre de la materia
+                tr: td(colspan="3")
+                    input._editarMateria(type="text" value=nombre name="nombre" placeholder=nombre readonly required)
+                tr: td(colspan="3")
+                    label._editarMateria(for="lic") Licenciatura
+                tr: td(colspan="3")
+                    select#licMateria(name="lic" required)
+                        option(value="") Selecciona tu licenciatura
+                        if lic == 1
+                            option(value="1" selected) Arquitectura
+                        else 
+                            option(value="1") Arquitectura
+                        if lic == 2
+                            option(value="2" selected) APOU
+                        else
+                            option(value="2") APOU
+                        if lic == 3
+                            option(value="3" selected) Diseño gráfico
+                        else    
+                            option(value="3") Diseño gráfico
+                        if lic == 4
+                            option(value="4" selected) Diseño industrial
+                        else
+                            option(value="4") Diseño industrial
+                tr: td(colspan="3")
+                    label(for="semestre") Semestre
+                tr: td(colspan="3")
+                    input._editarMateria(type="number" name="semestre" value=semestre placeholder=nombre readonly required)
+                tr 
+                    td._buttons 
+                        input#editar(type="button" name="editar" value="Habilitar edicion")
+                    td._buttons 
+                        input#actualizar(type="submit" name="actualizar" value="Actualizar")
+                    td._buttons 
+                        input#eliminar(type="button" name="eliminar" value="Eliminar")
+            

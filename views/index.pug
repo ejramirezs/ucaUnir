@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  script(src="/"+"javascripts/validaciones.js")
+  section
+    aside
+      img(src="/"+"images/index.svg" alt="inicio")
+    article
+      h1 Bienvenido
+      p Registra tus clases para poder tener acceso a la sala de computo
+      form#registro(method="post" action="/")
+        input._solonumero(name="nocuenta" type="text" placeholder="Escribe tu numero de cuenta" value=nocuenta required)
+        //Se muestra el mensaje de error para el numero de cuenta
+        label._error #{err_nocuenta}
+        label(for="nombre")
+        input._sololetra(name="nombre" type="text" placeholder="Escribe tu nombre" value=nombre required)
+        label(for="apellidos")
+        input._sololetra(name="apellidos" type="text" placeholder="Ingresa tus apellidos" value=apellidos required)
+        select#lic(name="lic" required)
+          option(value="") Selecciona tu licenciatura
+          option(value="1") Arquitectura
+          option(value="2") APOU
+          option(value="3") Diseño gráfico
+          option(value="4") Diseño industrial
+        input#_email(name="email"  type="email" placeholder="ejemplo@host.com" value=email required)
+        label._error #{err_email}
+        input#_contrasena(name="contraseña" type="password" placeholder="Contraseña" required)
+        label._error #{err_contraseña}
+        input#_confirmacontrasena(name="confirma_contraseña" type="password" placeholder="Confirma tu contraseña" required)
+        br
+        input#_submitlogin(type="submit" value="Registrarse") 
+        

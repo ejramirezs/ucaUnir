@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    script(src="/"+"javascripts/validaciones.js")
+    section
+        aside
+        article
+            h2 Ingresa para registrar y consultar tus clases
+            h3 #{h3}
+            form#login_form(action="/login" method="post")
+                label(for="nocuenta") Numero de cuenta
+                br
+                input._solonumero(name="nocuenta"  type="text" placeholder="Ingresa tu numero de cuenta" required)
+                br
+                label(for="contrasena") Contraseña
+                br
+                input(name="contrasena" type="password" placeholder="Contraseña" required)
+                br
+                input#_submitlogin(type="submit" value="Entrar")
